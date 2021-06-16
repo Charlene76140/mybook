@@ -40,7 +40,7 @@ INSERT INTO customer (lastname, firstname, street_number,street_address, area_co
 INSERT INTO book (title, author, release_date, category, status , summary, customer_id)
 VALUES
 ('La Conjuration des imbéciles', 'John Kennedy Toole', '2002-04-05', 'Roman', 'disponible','Années 1960 à la Nouvelle Orléans : bla bla bla bla', NULL),
-('Tout ce que j’aimais', 'Siri Hustvedt', '2013-07-10' , 'Roman', 'indisponible', 'Deux couples d’artistes s’installent, chaque couple a un enfant. Mais des drames vont frapper leur vie, bla bla bal', 2),
+('Tout ce que j’aimais', 'Siri Hustvedt', '2013-07-10' , 'Roman', 'indisponible', 'Deux couples d’artistes s’installent, chaque couple a un enfant. Mais des drames vont frapper leur vie, bla bla bal', 1),
 ('Le Horla', 'Guy de Maupassant', '1994-08-18', 'Récit Fantastique', 'indisponible', 'Le narrateur est-il fou ? Le Horla est-il une créature fantomatique ou une créature supérieure d’origine inconnue ?', 3),
 ('Frankenstein', 'Mary Shelley', '2015-11-05', 'Horreur', 'disponible', 'Pour avoir voulu créer la vie Victor Frankenstein a donné naissance à un être monstrueux...', NULL)
 ;

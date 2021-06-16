@@ -8,7 +8,7 @@ class Book {
     protected string $category;
     protected string $status;
     protected string $summary;
-    protected ?int $customer_id;
+    protected ?string $customer_id;
 
     public function __construct(?array $data=null){
         if($data){
@@ -78,14 +78,8 @@ class Book {
         return htmlspecialchars($this->summary);
     }
 
-    public function setCustomer_id($customer_id){
-        if($customer_id){
-            $this->customer_id= $customer_id;
-        }
-        else{
-            $this->customer_id = null;
-        }
-        
+    public function setCustomer_id(?string $customer_id){
+       $this->customer_id= intval($customer_id);
     }
 
     public function getCustomer_id(){

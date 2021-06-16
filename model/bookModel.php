@@ -1,5 +1,5 @@
 <?php
-  require "dataBase.php";
+  require_once "dataBase.php";
 
   class bookModel extends dataBase {
 
@@ -14,8 +14,20 @@
     }
 
     // Récupère un livre
-    public function getBook() {
+    public function getBook(int $id) {
+      $query= $this->db->prepare(
+        "SELECT b.*, c.id as customer_id, c.lastname, c.firstname, c.personnal_code FROM book as b
+        LEFT JOIN customer as c
+        ON customer_id = b.customer_id 
+        WHERE b.id=:id"
+      );
+      $query->execute([
+        "id" => $id,
+      ]);
 
+      $result = $query->fetch(PDO::FETCH_ASSOC);
+      $book = new Book($result);
+      return $book;
     }
 
     // Ajoute un nouveau livre

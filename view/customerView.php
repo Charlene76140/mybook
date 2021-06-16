@@ -1,3 +1,4 @@
+
 <?php include "layout/header/header.php"; ?>
 
 <p>l'utilisateur sur lequel on a cliqué s'affiche sur cette page</p>

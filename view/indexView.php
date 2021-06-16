@@ -28,7 +28,7 @@
                 <td><?php echo $book->getCategory()?></td>
                 <td><?php echo $book->getStatus()?></td>
                 <td><?php echo $book->getSummary()?></td>
-                <td><a href="#">Voir le livre</a></td>
+                <td><a href="book.php?id=<?php echo $book->getId()?>">Voir le livre</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody> 
