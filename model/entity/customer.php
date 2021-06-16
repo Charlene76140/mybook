@@ -1,14 +1,14 @@
 <?php
 // Classe représetant les utilisateurs stockés en base de données
 class Customer {
-    protected ?int $id;
+    protected ?int $customerId;
     protected string $lastname;
     protected string $firstname;
     protected string $street_number;
     protected string $street_address;
     protected string $area_code;
     protected string $city;
-    protected int $personnal_code;
+    protected ?int $personnal_code;
 
     public function __construct(?array $data=null) {
         if($data){
@@ -77,7 +77,7 @@ class Customer {
         return htmlspecialchars($this->city);
     }
 
-    public function setPersonnal_code(string $personnal_code) {
+    public function setPersonnal_code(int $personnal_code) {
         $this->personnal_code = $personnal_code;
     }
 

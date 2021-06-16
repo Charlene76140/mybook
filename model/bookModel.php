@@ -16,9 +16,9 @@
     // Récupère un livre
     public function getBook(int $id) {
       $query= $this->db->prepare(
-        "SELECT b.*, c.id as customer_id, c.lastname, c.firstname, c.personnal_code FROM book as b
+        "SELECT b.*, c.id as customerId, c.lastname, c.firstname, c.personnal_code FROM book as b
         LEFT JOIN customer as c
-        ON customer_id = b.customer_id 
+        ON c.id = b.customer_id 
         WHERE b.id=:id"
       );
       $query->execute([
@@ -29,6 +29,17 @@
       $book = new Book($result);
       return $book;
     }
+
+    // $result = $query->fetch(PDO::FETCH_ASSOC);
+    //   if($result["customer_id"] !== NULL){
+    //     $book = new Book($result);
+    //     $customer = new Customer($result);
+    //   }
+    //   else{
+    //     $book = new Book($result);
+    //   }
+    //   return array($book, $customer);
+    // }
 
     // Ajoute un nouveau livre
     public function addBook() {

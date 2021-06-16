@@ -79,7 +79,7 @@ class Book {
     }
 
     public function setCustomer_id(?string $customer_id){
-       $this->customer_id= intval($customer_id);
+       $this->customer_id=$customer_id;
     }
 
     public function getCustomer_id(){

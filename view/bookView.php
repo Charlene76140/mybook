@@ -23,6 +23,7 @@
                     <?php endif ; ?>
                 </div>
             </div>
+            <?php if($book->getCustomer_id()) :?>
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
@@ -34,6 +35,7 @@
                     </ul>
                 </div>
             </div>
+            <?php endif ; ?>
         </div>
     </section>
 

@@ -10,9 +10,10 @@
     if(isset($_GET["id"]) AND !empty($_GET["id"])){
         $book = $bookModel->getBook($_GET["id"]);
         var_dump($book);
+
         if($book->getCustomer_id()){
+            var_dump($book->getCustomer_id());
             $customer=$customerModel->getCustomerById($book->getCustomer_id());
-            var_dump($customer);
         }
     }
     
