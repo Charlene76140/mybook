@@ -1,7 +1,6 @@
 <?php
   require_once "dataBase.php";
-  // require "model/entity/customer.php";
-
+  
   class customerModel extends dataBase {
 
     // Récupère tous les utilisateurs

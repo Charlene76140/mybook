@@ -5,17 +5,16 @@
         <h2 class="my-3">Détail du livre : </h2>
         <div class="row">
             <div class="card text-center col-6">
-                <div class="card-header fs-3">
+                <div class="card-header fs-4">
                     <?php echo $book->getTitle()?>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Auteur : <?php echo $book->getAuthor()?></h5>
+                    <p class="card-text">Auteur : <?php echo $book->getAuthor()?></p>
                     <p class="card-text">Date de parution : <?php echo $book->getRelease_date()?></p>
                     <p class="card-text">Catégorie : <?php echo $book->getCategory()?></p>
-                    
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="#" class="btn btn-primary">Supprimer le livre</a>
+                    <a href="index.php?id=<?php echo $book->getId()?>&amp;status=<?php echo $book->getStatus()?>" class="btn btn-primary">Supprimer le livre</a>
                     <?php if(!$book->getCustomer_id()) :?>
                     <a href="#" class="btn btn-primary">Attribuer le livre</a>
                     <?php else :?>

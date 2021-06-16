@@ -40,7 +40,7 @@
                         <a class="nav-link" href="index.php">Accueil</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="book.php">Ajouter un livre</a>
+                        <a class="nav-link" href="newbook.php">Ajouter un livre</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="users.php">Voir les utilisateurs</a>

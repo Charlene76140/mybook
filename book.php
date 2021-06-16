@@ -5,17 +5,24 @@
     require "model/customerModel.php";
 
     $bookModel = new bookModel();
-    $customerModel = new customerModel();
+    $book = $bookModel->getBook($_GET["id"]);
+    // var_dump($book);
 
-    if(isset($_GET["id"]) AND !empty($_GET["id"])){
-        $book = $bookModel->getBook($_GET["id"]);
-        var_dump($book);
+    
+    // $customerModel = new customerModel();
 
-        if($book->getCustomer_id()){
-            var_dump($book->getCustomer_id());
-            $customer=$customerModel->getCustomerById($book->getCustomer_id());
-        }
-    }
+    // if(isset($_GET["id"]) AND !empty($_GET["id"])){
+    //     $book = $bookModel->getBook($_GET["id"]);
+    //     var_dump($book);
+
+    //     if($book->getCustomer_id()){
+    //         var_dump($book->getCustomer_id());
+    //         $customer=$customerModel->getCustomerById($book->getCustomer_id());
+    //     }
+    // }
+
+
+
     
     
     

@@ -15,7 +15,7 @@ class Book {
             foreach($data as $key=>$value){
                 $setter= "set". ucfirst($key);
                 if(method_exists($this,$setter)){
-                    $this->$setter(htmlspecialchars($value));
+                    $this->$setter($value);
                 }
             }
         }
@@ -29,6 +29,7 @@ class Book {
         return htmlspecialchars($this->id);
     }
 
+    
     public function setTitle(string $title){
         $this->title= $title;
     }
