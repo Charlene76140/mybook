@@ -5,7 +5,12 @@
 
     // Récupère tous les utilisateurs
     public function getCustomers() {
-
+      $response=$this->db->query("SELECT * FROM customer");
+      $result = $response->fetchAll(PDO :: FETCH_ASSOC);
+      foreach($result as $key=>$customer){
+        $result[$key] = new Customer($customer);
+      }
+      return $result;
     }
 
     // Récupère un utilisateur par son id

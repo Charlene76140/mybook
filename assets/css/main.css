@@ -113,7 +113,17 @@ body{
     background-color: #95818d81;
 }
 
+i{
+    font-size: 1.5em;
+}
 
+.fa-smile{
+    color: green;
+}
+
+.fa-frown{
+    color : orangered;
+}
 
   
 /* ##################################################################### */

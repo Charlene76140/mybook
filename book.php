@@ -5,23 +5,34 @@
     require "model/customerModel.php";
 
     $bookModel = new bookModel();
-    $book = $bookModel->getBook($_GET["id"]);
-    // var_dump($book);
+    $customerModel = new customerModel();
 
-    
-    // $customerModel = new customerModel();
+    if(isset($_GET["id"]) AND !empty($_GET["id"])){
+        $book = $bookModel->getBook($_GET["id"]);
 
-    // if(isset($_GET["id"]) AND !empty($_GET["id"])){
-    //     $book = $bookModel->getBook($_GET["id"]);
-    //     var_dump($book);
+        if($book->getCustomer_id()){
+            $customer=$customerModel->getCustomerById($book->getCustomer_id());
+        }
+    }
 
-    //     if($book->getCustomer_id()){
-    //         var_dump($book->getCustomer_id());
-    //         $customer=$customerModel->getCustomerById($book->getCustomer_id());
-    //     }
-    // }
+    if(isset($_POST["supprimer"])){
+        $delete = $bookModel->deleteBook($book);
+        header("Location: index.php");
+        exit();
+    }
 
+    if(isset($_POST["customer_id"])){
+        $attribut= $bookModel->updateBookStatus($_POST["customer_id"], $book);
+        header("Location: index.php");
+        exit();
+    }
 
+    if(isset($_POST["rendre"])){
+        $giveBook = $bookModel->returnBook($book);
+        header("Location: index.php");
+        exit();
+    }
+   
 
     
     

@@ -2,9 +2,9 @@
 
 <main>
   <section class="container my-5">
-    <h2 class="my-3">Liste des livres : </h2>
+    <h2 class="my-5">Liste des livres : </h2>
     <div class="row">
-      <div class="col-sm-9 col-md-9 col-lg-11 m-auto text-center">
+      <div class="col-sm-12 col-md-9 col-lg-11 mx-auto text-center">
         <table class="table table-striped">
           <thead>
             <tr class="px-3">
@@ -14,8 +14,7 @@
               <th scope="col">Date de parution</th>
               <th scope="col">Catégorie</th>
               <th scope="col">Status</th>
-              <th scope="col">Résumé</th>
-              <th scope="col">Gérez</th>
+              <th scope="col">Gérez</th> 
             </tr>
           </thead> 
           <tbody>  
@@ -26,9 +25,12 @@
                 <td><?php echo $book->getAuthor()?></td>
                 <td><?php echo $book->getRelease_date()?></td>
                 <td><?php echo $book->getCategory()?></td>
-                <td><?php echo $book->getStatus()?></td>
-                <td><?php echo $book->getSummary()?></td>
-                <td><a href="book.php?id=<?php echo $book->getId()?>">Voir le livre</a></td>
+                <?php if($book->getStatus() == "disponible") :?>
+                <td><i class="far fa-smile smile"></i></td>
+                <?php else :?>
+                <td><i class="far fa-frown notsmile"></i></td>
+                <?php endif;?>
+                <td><a class="btn bgColor" href="book.php?id=<?php echo $book->getId()?>">Voir</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody> 

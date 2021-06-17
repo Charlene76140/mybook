@@ -8,15 +8,7 @@
 
     
 
-    if(isset($_GET["id"]) AND $_GET["status"] === "disponible"){
-        $delete = $bookModel->deleteBook($_GET["id"]);
-        header("Location: index.php");
-        exit();
-    }
-    else{
-        $error="impossible de supprimer un livre indisponible";
-    }
-
+    
 
     require "view/indexView.php";
 

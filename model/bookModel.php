@@ -14,11 +14,23 @@
     }
 
     // Récupère un livre
+    public function getBook(int $id) {
+      $query= $this->db->prepare(
+        "SELECT * FROM book WHERE id=:id"
+      );
+      $query->execute([
+        "id" => $id,
+      ]);
+
+      $result = $query->fetch(PDO::FETCH_ASSOC);
+      $book = new Book($result);
+      return $book;
+    }
     // public function getBook(int $id) {
     //   $query= $this->db->prepare(
     //     "SELECT b.*, c.id as customerId, c.lastname, c.firstname, c.personnal_code FROM book as b
     //     LEFT JOIN customer as c
-    //     ON c.id = b.customer_id 
+    //     ON b.customer_id = c.id
     //     WHERE b.id=:id"
     //   );
     //   $query->execute([
@@ -26,35 +38,17 @@
     //   ]);
 
     //   $result = $query->fetch(PDO::FETCH_ASSOC);
-    //   $book = new Book($result);
-    //   return $book;
+    //   $book=new Book($result);
+
+    //   if($result["customer_id"] == NULL){
+    //     return $book;
+    //   }
+    //   else{
+    //     $customerModel = new customerModel();
+    //     $customer= $customerModel->getCustomerById($result["customer_id"]);
+    //     return array ($customer, $book);
+    //   }
     // }
-
-
-    public function getBook(int $id) {
-      $query= $this->db->prepare(
-        "SELECT b.*, c.id as customerId, c.lastname, c.firstname, c.personnal_code FROM book as b
-        LEFT JOIN customer as c
-        ON b.customer_id = c.id
-        WHERE b.id=:id"
-      );
-      $query->execute([
-        "id" => $id,
-      ]);
-
-      $result = $query->fetch(PDO::FETCH_ASSOC);
-      $book=new Book($result);
-
-      if($result["customer_id"] == NULL){
-        return $book;
-      }
-      else{
-        $customerModel = new customerModel();
-        $customer= $customerModel->getCustomerById($result["customer_id"]);
-        return array ($customer, $book);
-      }
-    }
-
 
 
     // Ajoute un nouveau livre
@@ -76,22 +70,44 @@
     }
 
     // Met à jour le statut d'un livre emprunté
-    public function updateBookStatus() {
-
+    public function updateBookStatus(int $customer_id, Book $data) {
+      $query= $this->db->prepare(
+        "UPDATE book SET customer_id=:customer_id , status=:status WHERE id= :id"
+      );
+      $result = $query->execute([
+        "customer_id"=>$customer_id,
+        "id"=>$data->getId(),
+        "status"=>"indisponible"
+      ]);
+      
+      return $result;
     }
 
-    public function deleteBook(int $id){
+    // Met à jour le statut d'un livre emprunté
+    public function returnBook( Book $data) {
+      $query= $this->db->prepare(
+        "UPDATE book SET customer_id=:customer_id , status=:status WHERE id= :id"
+      );
+      $result = $query->execute([
+        "customer_id"=>NULL,
+        "id"=>$data->getId(),
+        "status"=>"disponible"
+      ]);
+      
+      return $result;
+    }
+
+    // supprime un livre
+    public function deleteBook(Book $data){
       $query= $this->db->prepare(
         "DELETE FROM book WHERE id=:id"
       );
       $result = $query->execute([
-        "id"=>$id,
+        "id"=>$data->getId()
       ]);
       
       return $result; 
     }
-
-
 
   }
 ?>

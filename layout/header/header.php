@@ -43,7 +43,7 @@
                         <a class="nav-link" href="newbook.php">Ajouter un livre</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="users.php">Voir les utilisateurs</a>
+                        <a class="nav-link" href="customers.php">Voir les utilisateurs</a>
                         </li> 
                     </ul>
                 </div>

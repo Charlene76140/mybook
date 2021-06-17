@@ -1,7 +1,7 @@
 <?php
 // Classe représetant les livres stockés en base de données
 class Book {
-    protected int $id;
+    protected ?int $id;
     protected string $title;
     protected string $author;
     protected string $release_date;
@@ -15,7 +15,7 @@ class Book {
             foreach($data as $key=>$value){
                 $setter= "set". ucfirst($key);
                 if(method_exists($this,$setter)){
-                    $this->$setter($value);
+                   $this->$setter($value);
                 }
             }
         }
@@ -31,7 +31,8 @@ class Book {
 
     
     public function setTitle(string $title){
-        $this->title= $title;
+        $this->title = $title;
+        
     }
 
     public function getTitle(){
