@@ -3,7 +3,7 @@
   
   class customerModel extends dataBase {
 
-    // Récupère tous les utilisateurs
+    // Retrieve all users
     public function getCustomers() {
       $response=$this->db->query("SELECT * FROM customer");
       $result = $response->fetchAll(PDO :: FETCH_ASSOC);
@@ -13,7 +13,7 @@
       return $result;
     }
 
-    // Récupère un utilisateur par son id
+    // Retrieves a user by his id
     public function getCustomerById(int $id) {
       $query=$this->db->prepare("SELECT * FROM customer WHERE id=:id");
       $query->execute([
@@ -24,7 +24,7 @@
       return $result;
     }
 
-    // Récupère un utilisateur par son code personnel
+    // Retrieves a user by his personal code
     public function getCustomer() {
 
     }

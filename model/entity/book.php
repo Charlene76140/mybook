@@ -1,5 +1,5 @@
 <?php
-// Classe représetant les livres stockés en base de données
+// Class representing the users stored in the database
 class Book {
     protected ?int $id;
     protected string $title;
@@ -10,12 +10,14 @@ class Book {
     protected string $summary;
     protected ?string $customer_id;
 
+    const STATUS = ["disponible", "indisponible"];
+
     public function __construct(?array $data=null){
         if($data){
             foreach($data as $key=>$value){
                 $setter= "set". ucfirst($key);
                 if(method_exists($this,$setter)){
-                   $this->$setter($value);
+                   $this->$setter(htmlspecialchars($value));
                 }
             }
         }
@@ -63,9 +65,14 @@ class Book {
         return htmlspecialchars($this->category);
     }
 
-    //changement de statut par le setter????
+    //setStatus allows to update the status of the book when it is checked out or returned
     public function setStatus(string $status){
-        $this->status= $status;
+        if(in_array($status,self::STATUS)){
+            $this->status=$status;
+        }
+        else{
+            echo "choix possibles : disponible ou indisponible uniquement";
+        }
     }
 
     public function getStatus(){

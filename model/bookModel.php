@@ -3,7 +3,7 @@
 
   class bookModel extends dataBase {
 
-    // Récupère tous les livres
+    // get all the books
     public function getBooks() {
       $response=$this->db->query("SELECT * FROM book");
       $result = $response->fetchAll(PDO :: FETCH_ASSOC);
@@ -13,7 +13,7 @@
       return $result;
     }
 
-    // Récupère un livre
+    // get one book
     public function getBook(int $id) {
       $query= $this->db->prepare(
         "SELECT * FROM book WHERE id=:id"
@@ -26,6 +26,7 @@
       $book = new Book($result);
       return $book;
     }
+
     // public function getBook(int $id) {
     //   $query= $this->db->prepare(
     //     "SELECT b.*, c.id as customerId, c.lastname, c.firstname, c.personnal_code FROM book as b
@@ -51,7 +52,7 @@
     // }
 
 
-    // Ajoute un nouveau livre
+    // Add a new book
     public function addBook(Book $data) {
       $query=$this->db->prepare(
         "INSERT INTO book(title, author, release_date, category, status, summary) 
@@ -69,35 +70,21 @@
       return $result;
     }
 
-    // Met à jour le statut d'un livre emprunté
-    public function updateBookStatus(int $customer_id, Book $data) {
+    // Updates the status of a borrowed book
+    public function updateBookStatus(?int $customer_id, Book $data) {
       $query= $this->db->prepare(
         "UPDATE book SET customer_id=:customer_id , status=:status WHERE id= :id"
       );
       $result = $query->execute([
         "customer_id"=>$customer_id,
         "id"=>$data->getId(),
-        "status"=>"indisponible"
+        "status"=>$data->getStatus()
       ]);
       
       return $result;
     }
 
-    // Met à jour le statut d'un livre emprunté
-    public function returnBook( Book $data) {
-      $query= $this->db->prepare(
-        "UPDATE book SET customer_id=:customer_id , status=:status WHERE id= :id"
-      );
-      $result = $query->execute([
-        "customer_id"=>NULL,
-        "id"=>$data->getId(),
-        "status"=>"disponible"
-      ]);
-      
-      return $result;
-    }
-
-    // supprime un livre
+    // delete a book
     public function deleteBook(Book $data){
       $query= $this->db->prepare(
         "DELETE FROM book WHERE id=:id"

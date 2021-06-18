@@ -4,11 +4,7 @@
 
     $customerModel = new customerModel;
     $customers = $customerModel->getCustomers();
-    
 
-    
-
-    
 
     require "view/customersView.php";
 

@@ -4,7 +4,7 @@
     <section class="container my-5">
         <h2 class="my-5">Liste des utilisateurs : </h2>
         <div class="row">
-            <div class="col-sm-9 col-md-9 col-lg-11 m-auto text-center">
+            <div class="col-sm-12 col-md-9 col-lg-11 m-auto text-center">
                 <table class="table table-striped">
                     <thead>
                         <tr class="px-3">

@@ -1,5 +1,5 @@
 <?php
-// Classe représetant les utilisateurs stockés en base de données
+// Class representing the users stored in the database
 class Customer {
     protected ?int $customerId;
     protected string $lastname;
@@ -15,7 +15,7 @@ class Customer {
             foreach($data as $key=>$value){
                 $setter= "set". ucfirst($key);
                 if(method_exists($this,$setter)){
-                    $this->$setter($value);
+                    $this->$setter(htmlspecialchars($value));
                 }
             }
         }

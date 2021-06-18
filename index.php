@@ -4,11 +4,7 @@
 
     $bookModel = new bookModel;
     $books = $bookModel->getBooks();
-    // var_dump($books);
 
-    
-
-    
 
     require "view/indexView.php";
 

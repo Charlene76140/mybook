@@ -15,29 +15,25 @@
         }
     }
 
-    if(isset($_POST["supprimer"])){
-        $delete = $bookModel->deleteBook($book);
-        header("Location: index.php");
-        exit();
-    }
-
-    if(isset($_POST["customer_id"])){
-        $attribut= $bookModel->updateBookStatus($_POST["customer_id"], $book);
-        header("Location: index.php");
-        exit();
-    }
-
-    if(isset($_POST["rendre"])){
-        $giveBook = $bookModel->returnBook($book);
-        header("Location: index.php");
-        exit();
+    if(!empty($_POST)){
+        if(isset($_POST["supprimer"])){
+            $delete = $bookModel->deleteBook($book);
+            header("Location: index.php");
+            exit();
+        }
+        elseif(isset($_POST["customer_id"])){
+            $book->setStatus("indisponible");
+            $attribut= $bookModel->updateBookStatus($_POST["customer_id"], $book);
+            header("Location: index.php");
+            exit();
+        }
+        elseif(isset($_POST["rendre"])){
+            $book->setStatus("disponible");
+            $attribut= $bookModel->updateBookStatus(NULL, $book);
+            header("Location: index.php");
+            exit();
+        }
     }
    
-
-    
-    
-    
-
     require "view/bookView.php";
-
 ?>
