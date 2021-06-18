@@ -9,8 +9,6 @@
 
         public static function getPDOConnexion() {
             try {
-            // Make a factory to create a single instance of PDO (see singleton pattern)
-            // We need to always get the same instance of PDO for the transactions (lock issue)
             if(!self::$db) {
                 $db = new PDO("mysql:host=" . self::HOST . ";dbname=" . self::DBNAME, self::USER, self::PASSWORD);
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
