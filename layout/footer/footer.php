@@ -1,4 +1,4 @@
-    <footer class="container-fluid bgColor textColor mb-0">
+    <footer class="container-fluid bgColor textColor mb-0 mt-2">
         <div class="row">
             <p class="text-center">Mentions legales</p>
             <p class="text-center">Politiques de traitement des données</p>

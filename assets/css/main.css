@@ -113,27 +113,19 @@ body{
     background-color: #95818d81;
 }
 
-/*----------Main mobile---------*/
-/* table{
-    width: 100%;
-    margin: auto;
-    
-  } */
-  
-  td, th {
-    border: 1px solid black;
-    font-size: 1em;
-    padding: 2%;
-  }
-  
-  table th{
-    text-align: center;
-    min-height: 5vh;
-    min-width: 3vw;
-    background-color:#2c514c9f;
-    color: white;
-  }
+i{
+    font-size: 1.5em;
+}
 
+.fa-smile{
+    color: green;
+}
+
+.fa-frown{
+    color : orangered;
+}
+
+  
 /* ##################################################################### */
 /* ############################   TABLETS   ############################ */
 /* ##################################################################### */
@@ -313,9 +305,9 @@ body{
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
 
-    thead {
+    /* thead {
         display: table-header-group;
-    }
+    } */
 
     tr,
     img {
