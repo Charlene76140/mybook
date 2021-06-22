@@ -1,5 +1,5 @@
 # mybook
-Ce projet a été réalisé dans le cadre de ma formation développeur web et web mobile afin de valider mes acquis sur PHP en POO et MySQL  Il s'agit d'une application bancaire qui permet à l’utilisateur de créer et gérer ses comptes bancaires.
+Ce projet a été réalisé dans le cadre de ma formation développeur web et web mobile afin de valider mes acquis sur PHP en POO et MySQL  Il s'agit d'une application de gestion des livres dans une bibliothèque.
 
 Compétences évaluées :
 - Maquetter une application
